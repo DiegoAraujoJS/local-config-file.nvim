@@ -26,6 +26,7 @@ M.load_local_config = function()
       end
     end
   end
+  print("loaded configuration from .vimInit.lua")
 end
 
 return M
