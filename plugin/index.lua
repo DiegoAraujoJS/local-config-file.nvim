@@ -1,6 +1,3 @@
-local M = {}
-
-M.setup = function()
   local handle = io.popen("git rev-parse --show-toplevel 2>/dev/null")
   if handle == nil then
     return nil
@@ -27,6 +24,3 @@ M.setup = function()
     end
   end
   print("loaded configuration from .vimInit.lua")
-end
-
-return M
