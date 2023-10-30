@@ -1,4 +1,6 @@
-function LoadLocalConfig()
+local M = {}
+
+M.load_local_config = function()
   local handle = io.popen("git rev-parse --show-toplevel 2>/dev/null")
   if handle == nil then
     return nil
@@ -20,12 +22,10 @@ function LoadLocalConfig()
     local lines = vim.fn.split(content, "\n")
     for _, line in ipairs(lines) do
       if line:match("^vim%.opt%.") then
-        print(line)
         assert(loadstring(line))()
       end
     end
   end
 end
 
--- Call the function when Neovim starts
-vim.cmd("autocmd VimEnter * lua LoadLocalConfig()")
+return M
